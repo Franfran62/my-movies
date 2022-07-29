@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 
-<?php
-
-require_once "../Controller/MovieController.php";
-require_once "../Controller/CategoryController.php";
-require_once "../entity/Movie.php";
-require_once "../entity/Category.php";
-
-$MovieController = new MovieController();
-$movies = $MovieController->getAll();
-
-$categoryController = new CategoryController();
-
-
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,40 +11,43 @@ $categoryController = new CategoryController();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!--Main.css-->
-    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/look.css">
 
     <title>My Movies - Bibliothèque</title>
 </head>
 
+<?php
+
+require_once "../Controller/MovieController.php";
+require_once "../Controller/CategoryController.php";
+require_once "../Controller/UserController.php";
+require_once "../entity/Movie.php";
+require_once "../entity/Category.php";
+session_start();
+require "../html-partial/header.php";
+
+
+$MovieController = new MovieController();
+$categoryController = new CategoryController();
+$user = new UserController();
+
+$user_id = $user->getIdFromEmail($_SESSION['email']);
+
+if ($user_id ===false) {
+  echo "Utilisateur introuvable"; 
+} else {
+$movies = $MovieController->getAll($user_id);
+
+
+?>
+
+
 <body>
-
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../index.php" alt="My Movies"><i class="bi bi-film"></i> My Movies </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="../index.php">Home</a>
-                        <a class="nav-link" href="./publication.php">Publier </a>
-                        <a class="nav-link active" href="./bibliotheque.php">Bibliothèque </a>
-
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
 
     <main>
 
 
-
-
-    <section class="container d-flex justify-content-center">
+    <section class="container d-flex justify-content-center mt-3">
         <?php
         foreach ($movies as $movie) :
             $modalId = $movie->getId();
@@ -113,7 +101,7 @@ $categoryController = new CategoryController();
                 </div>
             </div>
 
-        <?php endforeach ?>
+        <?php endforeach; } ?>
 </section>
 
 

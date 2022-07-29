@@ -10,7 +10,7 @@
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="../style/main.css">
+        <link rel="stylesheet" href="../style/look.css">
 <style>
     textarea {
         resize: none;
@@ -19,30 +19,16 @@
     <title>My Movies - Publication</title>
 </head>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../index.php" alt="My Movies"><i class="bi bi-film"></i> My Movies </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="../index.php">Home</a>
-                        <a class="nav-link active" href="./publication.php">Publier </a>
-                        <a class="nav-link" href="./bibliotheque.php">Bibliothèque </a>
+<body> 
 
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+<?php
+session_start();
+require "../html-partial/header.php"; 
+ ?>
+
 
     <main>
-       <form class="container-fluid w-50"  method="post" action="../function/create.php" required>
+       <form class="container-fluid w-50 mt-3"  method="post" action="../function/create.php" required>
 
                 <label for="title" class="form-label"> Le titre du film * </label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="Le titre du film" required>

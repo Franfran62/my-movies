@@ -28,10 +28,12 @@ class MovieController {
         return $this;
     }
 
-    public function getAll() : array
+    public function getAll(string $user_id) : array
     {
         $movies= [];
-       $req =  $this->pdo->query( "SELECT * FROM movie");
+       $req =  $this->pdo->prepare( "SELECT * FROM movie WHERE user_id = :user_id");
+       $req->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+       $req->execute();
        $data = $req->fetchAll();
        foreach ($data as $movie)
        {
@@ -50,16 +52,18 @@ class MovieController {
 
     }
 
-    public function create(string $title, string $description, string $release_date, string $image_url, string $director, int $category_id) : void 
+    public function create(string $title, string $description, string $release_date, string $image_url, string $director, int $category_id, string $user_id) : void 
     {
-        $req = $this->pdo->prepare("INSERT INTO `movie` (title, description, release_date, image_url, director, category_id) 
-                                    VALUES (:title, :description, :release_date, :image_url, :director, :category_id)");
+        $req = $this->pdo->prepare("INSERT INTO `movie` (title, description, release_date, image_url, director, category_id, user_id) 
+                                    VALUES (:title, :description, :release_date, :image_url, :director, :category_id, :user_id)");
         $req->bindValue(':title', $title, PDO::PARAM_STR);
         $req->bindValue(':description', $description, PDO::PARAM_STR);
         $req->bindValue(':release_date', $release_date, PDO::PARAM_STR);
         $req->bindValue(':image_url', $image_url, PDO::PARAM_STR);
         $req->bindValue(':director', $director, PDO::PARAM_STR);
         $req->bindValue(':category_id', $category_id, PDO::PARAM_INT);
+        $req->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+
         $req->execute();
     }
 
