@@ -2,7 +2,12 @@
 
 echo 'ici ca va'; 
 
-require __DIR__."/../Controller/UserController.php";
+// require __DIR__."/../Controller/UserController.php";
+
+require "../Controller/testDebug.php";
+$test = new Test(); 
+
+$test->sayHello();
 
 echo '1'; 
 
