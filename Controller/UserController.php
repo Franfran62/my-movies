@@ -40,9 +40,9 @@ class UserController {
     public function isConnected(string $email, string $password) 
      {
      echo 'Un ';
-        $req = $this->pdo->prepare("SELECT * FROM `user` WHERE email = :email");
+        $req = $this->pdo->prepare("SELECT * FROM user WHERE email = :email");
     echo 'Deux ';
-        $req->bindValue(':email', $email);
+        $req->bindValue(':email', $email, PDO::PARAM_STR);
     echo 'Trois ';
         $req->execute();
     echo 'Quatre ';
@@ -90,6 +90,17 @@ class UserController {
             return $user['id'];
         }
 
+    }
+
+
+    public function Connected(string $email, string $password) 
+    {
+        $req = $this->pdo->prepare("SELECT * FROM `user`");
+        $req->execute();
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+        var_dump($user);
+        echo $email;
+        echo $password;
     }
 
     

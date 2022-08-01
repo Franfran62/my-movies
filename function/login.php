@@ -19,7 +19,7 @@ if (empty($_POST['emailLog']) || empty($_POST['password']))
 
 } else {
     echo '4'; 
- $user->isConnected($_POST['emailLog'],$_POST['password']);
+ $user->Connected($_POST['emailLog'],$_POST['password']);
     echo '5';
 // header('Location: https://projet-my-movies-php.herokuapp.com ');
 // echo '6'; 
