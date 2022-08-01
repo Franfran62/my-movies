@@ -19,8 +19,12 @@
 <body>
 
 <?php 
+require "./Controller/UserController.php";
+$controller = new UserController(); 
+
 session_start();
 require "./html-partial/header.php"; 
+
 ?>
 
     <h1 class="mt-3"> Bienvenue sur My Movies </h1>
