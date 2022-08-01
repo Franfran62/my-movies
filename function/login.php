@@ -1,6 +1,7 @@
 <?php 
 
 echo 'ici ca va'; 
+echo $_ENV['DATABASE_DNS'];
 
 require "../Controller/UserController.php";
 
