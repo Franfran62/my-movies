@@ -41,18 +41,13 @@ class UserController {
     public function isConnected(string $email, string $password) 
      {
      echo 'Un ';
-     try {
-        $this->setPdo(new PDO($_ENV['DATABASE_DNS'],$_ENV['username'], $_ENV['password']));
-        echo "I'm connected to DB";
-      } catch (PDOException $error) {
-          echo "Il y a une erreur ";
-          var_dump($error);
-      }
         $req = $this->pdo->prepare("SELECT * FROM user WHERE email = :email");
     echo 'Deux ';
-        $req->bindValue(':email', $email, PDO::PARAM_STR);
+        $req->bindParam(':email', $email, PDO::PARAM_STR);
     echo 'Trois ';
-        $req->execute();
+    var_dump($req);
+    echo '<br>';
+    var_dump($req->execute());
     echo 'Quatre ';
             $user = $req->fetch(PDO::FETCH_ASSOC);
     echo 'Cinq ';
