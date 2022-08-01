@@ -40,30 +40,28 @@ class UserController {
 
     public function isConnected(string $email, string $password) 
      {
-     echo 'Un ';
-        $req = $this->pdo->prepare("SELECT * FROM user WHERE email = :email");
-    echo 'Deux ';
+        $req = $this->pdo->prepare("SELECT * FROM user WHERE email =:email");
         $req->bindValue(':email', $email, PDO::PARAM_STR);
     echo 'Trois ';
-    var_dump($req);
-    echo '<br>';
-    var_dump($email);
-    echo '<br>';
-    var_dump($req->execute());
-    echo 'Quatre ';
+    if ($req->execute()) {
+            // La requête s'est bien déroulée
             $user = $req->fetch(PDO::FETCH_ASSOC);
-    echo 'Cinq ';
                 if($user === false || !password_verify($password ,$user['password'])) {
                     echo 'Identifiants introuvables';
                 }  else {
-    echo 'Six';
+
                     session_start();
-    echo "sept";
+
                     $_SESSION["username"] = $user["username"];  
-    echo "huit";
+
                     $_SESSION["email"] = $user["email"];  
-    echo "neuf";              
-                }
+             
+                } } else {
+        
+                    $errorInfo = $req->errorInfo();
+                    echo 'SQLSTATE : '.$errorInfo[0].'<br>';
+                    echo 'Erreur du driver : '.$errorInfo[1].'<br>';
+                    echo 'Message : '.$errorInfo[2];
 
     }
          
