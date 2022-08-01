@@ -33,7 +33,7 @@ $user = new UserController();
 
         $movie->create($title, $description, $release_date, $image_url, $director, $category_id, $userId);
         
-        header('Location: ../view/bibliotheque.php');
+        header('Location: https://projet-my-movies-php.herokuapp.com/view/bibliotheque.php');
         exit();
     }
 }

@@ -25,7 +25,7 @@ if ($user->alreadyExists($email)) {
     $user->isConnected($_POST['emailLog'],$_POST['password'],$_POST['username']);
     $_SESSION["username"] = $_POST["username"];
     $_SESSION["email"] = $_POST["email"];
-    header('Location: ../index.php');
+    header('Location: https://projet-my-movies-php.herokuapp.com/index.php');
    exit();
    
 }

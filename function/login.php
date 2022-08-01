@@ -11,7 +11,7 @@ if (empty($_POST['emailLog']) || empty($_POST['password']))
 } else {
  $user->isConnected($_POST['emailLog'],$_POST['password']);
 
-header('Location: ../index.php');
+header('Location: https://projet-my-movies-php.herokuapp.com');
 exit();
 
 }

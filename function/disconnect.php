@@ -3,7 +3,7 @@
 session_start();
 session_destroy();
 
-header('Location: ../index.php');
+header('Location: https://projet-my-movies-php.herokuapp.com/index.php');
 exit();
 
 

@@ -7,6 +7,6 @@ $movieController->delete($_GET['id']);
 
 // echo "<script>window.location='../index.php'</script>";
 
-header('Location: ../view/bibliotheque.php');
+header('Location: https://projet-my-movies-php.herokuapp.com/view/bibliotheque.php');
 exit();
 

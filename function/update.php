@@ -13,5 +13,5 @@ $id = htmlspecialchars($_GET['id']);
 
 $movie->update($title, $description, $release_date, $image_url, $director, $category_id, $id);
 
-header('Location: ../view/bibliotheque.php');
+header('Location: https://projet-my-movies-php.herokuapp.com/view/bibliotheque.php');
 exit();
