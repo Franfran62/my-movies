@@ -43,9 +43,11 @@ class UserController {
      echo 'Un ';
         $req = $this->pdo->prepare("SELECT * FROM user WHERE email = :email");
     echo 'Deux ';
-        $req->bindParam(':email', $email, PDO::PARAM_STR);
+        $req->bindValue(':email', $email, PDO::PARAM_STR);
     echo 'Trois ';
     var_dump($req);
+    echo '<br>';
+    var_dump($email);
     echo '<br>';
     var_dump($req->execute());
     echo 'Quatre ';
