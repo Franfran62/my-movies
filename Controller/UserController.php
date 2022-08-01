@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../config/dotenv.php";
+// require_once "../config/dotenv.php";
 
 class UserController {
 
@@ -11,7 +11,7 @@ class UserController {
     public function __construct() {
 
        
-        (new DotEnv('../.env'))->load();
+        // (new DotEnv('../.env'))->load();
 
         try {
             $this->setPdo(new PDO(getenv('DATABASE_DNS'),getenv('username'), getenv('password')));
