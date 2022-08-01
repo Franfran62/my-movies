@@ -45,6 +45,14 @@ class UserController {
     echo 'Trois ';
     if ($req->execute()) {
             // La requête s'est bien déroulée
+        } else {
+        
+            $errorInfo = $req->errorInfo();
+            echo 'SQLSTATE : '.$errorInfo[0].'<br>';
+            echo 'Erreur du driver : '.$errorInfo[1].'<br>';
+            echo 'Message : '.$errorInfo[2]; 
+        }
+
             $user = $req->fetch(PDO::FETCH_ASSOC);
                 if($user === false || !password_verify($password ,$user['password'])) {
                     echo 'Identifiants introuvables';
@@ -56,13 +64,7 @@ class UserController {
 
                     $_SESSION["email"] = $user["email"];  
              
-                } } else {
-        
-                    $errorInfo = $req->errorInfo();
-                    echo 'SQLSTATE : '.$errorInfo[0].'<br>';
-                    echo 'Erreur du driver : '.$errorInfo[1].'<br>';
-                    echo 'Message : '.$errorInfo[2];
-
+                }
     }
          
     
