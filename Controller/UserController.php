@@ -14,7 +14,7 @@ class UserController {
         // (new DotEnv('../.env'))->load();
 
         try {
-            $this->setPdo(new PDO(getenv('DATABASE_DNS'),getenv('username'), getenv('password')));
+            $this->setPdo(new PDO($_ENV['DATABASE_DNS'],$_ENV['username'], $_ENV['password']));
         } catch (PDOException $error) {
             echo "Il y a une erreur ";
             var_dump($error);
