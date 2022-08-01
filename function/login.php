@@ -11,8 +11,10 @@ if (empty($_POST['emailLog']) || empty($_POST['password']))
 } else {
  $user->isConnected($_POST['emailLog'],$_POST['password']);
 
-header('Location: https://projet-my-movies-php.herokuapp.com');
+header('Location: https://projet-my-movies-php.herokuapp.com ');
 exit();
+
+echo "Personne n'est censé me voir"; 
 
 }
 

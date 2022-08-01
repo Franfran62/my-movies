@@ -24,7 +24,7 @@ if ($_POST) {
   $number    = preg_match('@[0-9]@', $_POST['password']);
   $specialChars = preg_match('@[^\w]@', $_POST['password']);
 
-  if(strlen($_POST['username']) < 20) 
+  if(strlen($_POST['username']) > 20) 
   {
      echo "Votre nom d'utilisateur est trop long";
 
