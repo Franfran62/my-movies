@@ -95,7 +95,7 @@ class UserController {
 
     public function Connected(string $email, string $password) 
     {
-        $req = $this->pdo->prepare("SELECT * FROM `user`");
+        $req = $this->pdo->prepare("SELECT * FROM user;");
         $req->execute();
         $user = $req->fetch(PDO::FETCH_ASSOC);
         var_dump($user);
