@@ -19,8 +19,10 @@
 <body>
 
 <?php 
-require "./Controller/UserController.php";
-$controller = new UserController(); 
+require "./Controller/testDebug.php";
+$test = new Test(); 
+
+$test->sayHello();
 
 session_start();
 require "./html-partial/header.php"; 
