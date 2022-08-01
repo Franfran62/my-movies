@@ -39,17 +39,25 @@ class UserController {
 
     public function isConnected(string $email, string $password) 
      {
-
+     echo 'Un ';
         $req = $this->pdo->prepare("SELECT * FROM `user` WHERE email = :email");
+    echo 'Deux ';
         $req->bindValue(':email', $email);
+    echo 'Trois ';
         $req->execute();
+    echo 'Quatre ';
             $user = $req->fetch(PDO::FETCH_ASSOC);
+    echo 'Cinq ';
                 if($user === false || !password_verify($password ,$user['password'])) {
                     echo 'Identifiants introuvables';
                 }  else {
+    echo 'Six';
                     session_start();
+    echo "sept";
                     $_SESSION["username"] = $user["username"];  
-                    $_SESSION["email"] = $user["email"];                 
+    echo "huit";
+                    $_SESSION["email"] = $user["email"];  
+    echo "neuf";              
                 }
 
     }
