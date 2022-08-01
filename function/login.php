@@ -1,7 +1,7 @@
 <?php 
 echo 'ici ca va'; 
 
-require_once "vendor/bin/heroku-php-apache2 Controller/UserController.php";
+require_once "vendor/bin/Controller/UserController.php";
 
 echo '1'; 
 
