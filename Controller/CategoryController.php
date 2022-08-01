@@ -1,6 +1,5 @@
 <?php
 
-require_once "../config/dotenv.php";
 
 class CategoryController {
 
@@ -8,15 +7,14 @@ class CategoryController {
 
     public function __construct() {
 
-        (new DotEnv('../.env'))->load();
-
         try {
-            $this->setPdo(new PDO(getenv('DATABASE_DNS'),getenv('username'), getenv('password')));
+            $this->setPdo(new PDO($_ENV['DATABASE_DNS'],$_ENV['username'], $_ENV['password']));
+            $this->pdo->query("USE ".$_ENV['database']);
+          } catch (PDOException $error) {
+              echo "Il y a une erreur ";
+              var_dump($error);
+      } }
 
-        } catch (PDOException $error) {
-            echo "Il y a une erreur $error";
-        }
-    }
 
 
     public function setPdo(PDO $pdo)

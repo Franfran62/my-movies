@@ -20,7 +20,7 @@
                     </li>
 
                    <?= !empty($_SESSION["username"]) ? "<li class='nav-item '>
-                   <a class='nav-link' href=https://projet-my-movies-php.herokuapp.com/view/publication.php'> Publier </a>
+                   <a class='nav-link' href='https://projet-my-movies-php.herokuapp.com/view/publication.php'> Publier </a>
                    </li>" : "" ?>
 
                     <?= !empty($_SESSION["username"]) ? "<li class='nav-item '>
