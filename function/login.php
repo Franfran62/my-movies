@@ -2,7 +2,7 @@
 
 echo 'ici ca va'; 
 
-var_dump( realpath( __DIR__ . '/../..' ) );
+var_dump( realpath( __DIR__ . '/..' ) );
 
 
 // require_once __DIR__."/../app/Controller/UserController.php";
