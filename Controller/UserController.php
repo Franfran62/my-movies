@@ -16,6 +16,8 @@ class UserController {
         try {
           $this->setPdo(new PDO($_ENV['DATABASE_DNS'],$_ENV['username'], $_ENV['password']));
           echo "I'm connected to DB";
+          $this->pdo->query("USE ".$_ENV['database']);
+          echo "I'm connected to the good base";
         } catch (PDOException $error) {
             echo "Il y a une erreur ";
             var_dump($error);
@@ -40,9 +42,11 @@ class UserController {
 
     public function isConnected(string $email, string $password) 
      {
+echo 'un';
         $req = $this->pdo->prepare("SELECT * FROM user WHERE email =:email");
+echo 'deux';
         $req->bindValue(':email', $email, PDO::PARAM_STR);
-    echo 'Trois ';
+echo 'Trois ';
     if ($req->execute()) {
             // La requête s'est bien déroulée
         } else {
@@ -52,7 +56,7 @@ class UserController {
             echo 'Erreur du driver : '.$errorInfo[1].'<br>';
             echo 'Message : '.$errorInfo[2]; 
         }
-
+echo 'quatre';
             $user = $req->fetch(PDO::FETCH_ASSOC);
                 if($user === false || !password_verify($password ,$user['password'])) {
                     echo 'Identifiants introuvables';
@@ -61,7 +65,6 @@ class UserController {
                     session_start();
 
                     $_SESSION["username"] = $user["username"];  
-
                     $_SESSION["email"] = $user["email"];  
              
                 }
