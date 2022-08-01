@@ -2,7 +2,7 @@
 
 echo 'ici ca va'; 
 
-require_once __DIR__."/../Controller/UserController.php";
+require __DIR__."/../Controller/UserController.php";
 
 echo '1'; 
 
@@ -20,13 +20,11 @@ if (empty($_POST['emailLog']) || empty($_POST['password']))
 } else {
     echo '4'; 
  $user->isConnected($_POST['emailLog'],$_POST['password']);
- echo '5'; 
-
+    echo '5';
 // header('Location: https://projet-my-movies-php.herokuapp.com ');
 // echo '6'; 
 // exit();
 
-echo "Personne n'est censé me voir"; 
 
 }
 
