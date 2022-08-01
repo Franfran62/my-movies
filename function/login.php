@@ -1,7 +1,7 @@
 <?php 
 echo 'ici ca va'; 
 
-require_once __DIR__."../Controller/UserController.php";
+require_once "https://projet-my-movies-php.herokuapp.com/Controller/UserController.php";
 
 echo '1'; 
 
