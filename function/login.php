@@ -4,7 +4,7 @@ echo 'ici ca va';
 
 echo __DIR__;
 
-require_once "./app/Controller/UserController.php";
+require_once __DIR__."/../app/Controller/UserController.php";
 
 echo '1'; 
 
